@@ -1,0 +1,139 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>danny's robot</title>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            border: 20px solid #36362a;
+        }
+
+        #face {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+            border-bottom: 15px solid #36362a;
+            background: #dcd7d2;
+        }
+
+        #face img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        #buttons {
+            flex: 3;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 0px;
+            min-height: 0;
+            background: #7b808a;
+            border-top: 15px solid black;
+        }
+
+        #buttons button {
+            font-family: "Noto Emoji";
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            cursor: pointer;
+        }
+
+        #buttons button {
+            border: 3px solid #7b808a;
+            border-radius: 0px;
+            background: #debb8d;
+            color: #222;
+        }
+
+        #buttons button:active {
+            transform: scale(0.95);
+        }
+
+        @media (min-width: 600px) {
+            body {
+                display: grid;
+                place-items: center;
+                background: #eee;
+            }
+
+            #container {
+                width: min(90vw, calc(90dvh * 1 / 2));
+                height: min(90dvh, calc(90vw * 2 / 1));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="face">
+            <img id="expression" src="img/faces/face-happy.png">
+        </div>
+
+        <div id="buttons">
+            <button type="button" style="color:#84714d">📍</button>
+            <button type="button" style="color:#4a5857">🎵</button>
+            <button type="button" style="color:#715f6b">📖</button>
+            <button type="button" style="color:#524336">✌️</button>
+            <button type="button" style="color:#5f4735">💬</button>
+            <button type="button" style="color:#66644b" id="random-expression">🙃</button>
+            <button type="button" style="color:#484a42">➕</button>
+            <button type="button" style="color:#84716c">⚾</button>
+            <button type="button" style="color:#4d483e">💰</button>
+            <button type="button" style="color:#52436c">🍎</button>
+            <button type="button" style="color:#454c63">⭐</button>
+            <button type="button" style="color:#7b596a">🎲</button>
+        </div>
+    </div>
+
+    <script>
+        const expressions = [
+            "img/faces/face-happy.png",
+            "img/faces/face-delighted.png",
+            "img/faces/face-eating.png",
+            "img/faces/face-excited.png",
+            "img/faces/face-hmm.png",
+            "img/faces/face-mad.png",
+            "img/faces/face-meh.png",
+            "img/faces/face-smug.png",
+            "img/faces/face-worried.png"
+        ];
+
+        const image = document.getElementById("expression");
+
+        document.getElementById("random-expression").addEventListener("click", () => {
+            const randomIndex = Math.floor(Math.random() * expressions.length);
+            image.src = expressions[randomIndex];
+        });
+    </script>
+</body>
+
+</html>
